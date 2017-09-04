@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+<<<<<<< HEAD
+  <configSections>
+    <section name="scrapper" type="MskManager.Scrapper.Configurations.ScrapperSection, MskManager.Scrapper"/>
+  </configSections>
+  <scrapper>
+    <radios>
+      <add name="djam" uri="http://www.djamradio.com/actions/infos.php" />
+    </radios>
+  </scrapper>
+=======
+>>>>>>> a26167c9a441dea32f03604248fbfc3d72472eb0
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.1" />
+    </startup>
+</configuration>

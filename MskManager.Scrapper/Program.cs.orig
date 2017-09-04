@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
+using MskManager.Scrapper.Configurations;
+=======
+>>>>>>> a26167c9a441dea32f03604248fbfc3d72472eb0
 
 namespace MskManager.Scrapper
 {
@@ -10,6 +14,10 @@ namespace MskManager.Scrapper
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD
+            
+=======
+>>>>>>> a26167c9a441dea32f03604248fbfc3d72472eb0
         }
     }
 }
