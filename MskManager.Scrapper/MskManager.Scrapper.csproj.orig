@@ -33,7 +33,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+<<<<<<< HEAD
     <Reference Include="System.Configuration" />
+=======
+>>>>>>> a26167c9a441dea32f03604248fbfc3d72472eb0
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,12 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Configurations\IRadioConfiguration.cs" />
     <Compile Include="Configurations\IScrapperConfiguration.cs" />
     <Compile Include="Configurations\RadioCollection.cs" />
     <Compile Include="Configurations\RadioElement.cs" />
     <Compile Include="Configurations\ScrapperConfiguration.cs" />
     <Compile Include="Configurations\ScrapperSection.cs" />
+=======
+>>>>>>> a26167c9a441dea32f03604248fbfc3d72472eb0
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
