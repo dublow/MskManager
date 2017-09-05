@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MskManager.Common\MskManager.Common.csproj">
+      <Project>{BDBF1722-01BE-48DC-946D-AE18A63FBE4E}</Project>
+      <Name>MskManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
