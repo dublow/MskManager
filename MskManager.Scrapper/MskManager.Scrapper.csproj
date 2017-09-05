@@ -49,8 +49,11 @@
     <Compile Include="Configurations\RadioElement.cs" />
     <Compile Include="Configurations\ScrapperConfiguration.cs" />
     <Compile Include="Configurations\ScrapperSection.cs" />
+    <Compile Include="Models\Song.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scrappers\DjamScrapper.cs" />
+    <Compile Include="Scrappers\IScrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
