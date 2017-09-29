@@ -51,12 +51,15 @@
     <Compile Include="Models\Djam\Deezer.cs" />
     <Compile Include="Models\Djam\Track.cs" />
     <Compile Include="Models\Fip\Track.cs" />
+    <Compile Include="Models\Nova\Message.cs" />
+    <Compile Include="Models\Nova\Radio.cs" />
+    <Compile Include="Models\Nova\Track.cs" />
     <Compile Include="Models\Song.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scrappers\DjamScrapper.cs" />
-    <Compile Include="Scrappers\FipScrapper.cs" />
+    <Compile Include="Scrappers\RadioScrapper.cs" />
     <Compile Include="Scrappers\IScrapper.cs" />
+    <Compile Include="Scrappers\Parsors.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

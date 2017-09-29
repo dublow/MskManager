@@ -1,39 +1,35 @@
 ﻿using MskManager.Common.Extensions;
 using MskManager.Common.Http;
 using MskManager.Scrapper.Models;
-using MskManager.Scrapper.Models.Djam;
-using System.Linq;
+using MskManager.Scrapper.Models.Nova;
+using System;
 using System.Threading.Tasks;
 
 namespace MskManager.Scrapper.Scrappers
 {
-    public class DjamScrapper : IScrapper
+    public class RadioScrapper : IScrapper
     {
         private readonly IHttpClient _httpClient;
+        private readonly Func<string, Song> _parser;
 
-        public DjamScrapper(IHttpClient httpClient)
+        public RadioScrapper(IHttpClient httpClient, Func<string, Song> parser)
         {
             _httpClient = httpClient;
+            _parser = parser;
         }
 
         public Song Scrap(string uri)
         {
             var result = _httpClient.Get(uri);
-            return GetSong(result);
+            return _parser(result);
         }
 
         public async Task<Song> ScrapAsync(string uri)
         {
             var result = await _httpClient.GetAsync(uri);
-            return GetSong(result);
+            return _parser(result);
         }
 
-        private Song GetSong(string value)
-        {
-            var message = value.Deserialize<Message>();
-            var track = message.Tracks.First();
-
-            return new Song(track.Title, track.Artist);
-        }
+        
     }
 }

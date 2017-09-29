@@ -23,7 +23,7 @@ namespace MskManager.Scrapper.Test.Fip
                 .WithGet(uri, message)
                 .Build();
 
-            var scrapper = new FipScrapper(httpClient);
+            var scrapper = new RadioScrapper(httpClient, Parsors.Fip);
 
             var actual = scrapper.Scrap(uri);
 
@@ -41,7 +41,7 @@ namespace MskManager.Scrapper.Test.Fip
                 .WithGetAsync(uri, message)
                 .Build();
 
-            var scrapper = new FipScrapper(httpClient);
+            var scrapper = new RadioScrapper(httpClient, Parsors.Fip);
 
             var actual = await scrapper.ScrapAsync(uri);
 
@@ -57,7 +57,7 @@ namespace MskManager.Scrapper.Test.Fip
                 .WithGet(uri, null)
                 .Build();
 
-            var scrapper = new FipScrapper(httpClient);
+            var scrapper = new RadioScrapper(httpClient, Parsors.Fip);
 
             Assert.Throws<ArgumentNullException>(() => scrapper.Scrap(uri));
         }
@@ -70,7 +70,7 @@ namespace MskManager.Scrapper.Test.Fip
                 .WithGetAsync(uri, null)
                 .Build();
 
-            var scrapper = new FipScrapper(httpClient);
+            var scrapper = new RadioScrapper(httpClient, Parsors.Fip);
 
             Assert.ThrowsAsync<ArgumentNullException>(() => scrapper.ScrapAsync(uri));
         }

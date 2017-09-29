@@ -23,7 +23,7 @@ namespace MskManager.Scrapper.Test.Djam
                 .WithGet(uri, message)
                 .Build();
 
-            var scrapper = new DjamScrapper(httpClient);
+            var scrapper = new RadioScrapper(httpClient, Parsors.Djam);
 
             var actual = scrapper.Scrap(uri);
 
@@ -41,7 +41,7 @@ namespace MskManager.Scrapper.Test.Djam
                 .WithGetAsync(uri, message)
                 .Build();
 
-            var scrapper = new DjamScrapper(httpClient);
+            var scrapper = new RadioScrapper(httpClient, Parsors.Djam);
 
             var actual = await scrapper.ScrapAsync(uri);
 
@@ -57,7 +57,7 @@ namespace MskManager.Scrapper.Test.Djam
                 .WithGet(uri, null)
                 .Build();
 
-            var scrapper = new DjamScrapper(httpClient);
+            var scrapper = new RadioScrapper(httpClient, Parsors.Djam);
 
             Assert.Throws<ArgumentNullException>(() => scrapper.Scrap(uri));
         }
@@ -70,7 +70,7 @@ namespace MskManager.Scrapper.Test.Djam
                 .WithGetAsync(uri, null)
                 .Build();
 
-            var scrapper = new DjamScrapper(httpClient);
+            var scrapper = new RadioScrapper(httpClient, Parsors.Djam);
 
             Assert.ThrowsAsync<ArgumentNullException>(() => scrapper.ScrapAsync(uri));
         }
