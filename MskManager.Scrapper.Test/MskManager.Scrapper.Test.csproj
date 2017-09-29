@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{365C1D68-9405-4C9D-AB11-6914A5E91D35}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>MskManager.Scrapper</RootNamespace>
-    <AssemblyName>MskManager.Scrapper</AssemblyName>
+    <ProjectGuid>{8E095D81-F614-47CE-A3EA-335C42A20EAF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MskManager.Scrapper.Test</RootNamespace>
+    <AssemblyName>MskManager.Scrapper.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,12 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,25 +45,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Djam\Message.cs" />
-    <Compile Include="Models\Djam\Spotify.cs" />
-    <Compile Include="Models\Djam\Deezer.cs" />
-    <Compile Include="Models\Djam\Track.cs" />
-    <Compile Include="Models\Song.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Djam\When_Scrap.cs" />
+    <Compile Include="Helpers\FileLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scrappers\DjamScrapper.cs" />
-    <Compile Include="Scrappers\IScrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <EmbeddedResource Include="Djam\Ressources\message.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MskManager.Common.Test\MskManager.Common.Test.csproj">
+      <Project>{99feea0e-5df5-4f5a-953c-2661d1fba69a}</Project>
+      <Name>MskManager.Common.Test</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MskManager.Common\MskManager.Common.csproj">
       <Project>{BDBF1722-01BE-48DC-946D-AE18A63FBE4E}</Project>
       <Name>MskManager.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MskManager.Scrapper\MskManager.Scrapper.csproj">
+      <Project>{365C1D68-9405-4C9D-AB11-6914A5E91D35}</Project>
+      <Name>MskManager.Scrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

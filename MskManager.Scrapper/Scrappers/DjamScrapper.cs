@@ -1,24 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MskManager.Scrapper.Models;
+using MskManager.Common.Http;
+using System.Threading.Tasks;
+using MskManager.Scrapper.Models.Djam;
+using System.Linq;
 
 namespace MskManager.Scrapper.Scrappers
 {
     public class DjamScrapper : IScrapper
     {
-        private readonly string _uri;
+        private readonly IHttpClient _httpClient;
 
-        public DjamScrapper(string uri)
+        public DjamScrapper(IHttpClient httpClient)
         {
-            _uri = uri;
+            _httpClient = httpClient;
         }
 
-        public Song Scrap()
+        public Song Scrap(string uri)
         {
-            throw new NotImplementedException();
+            var result = _httpClient.Get(uri);
+
+            var message = Newtonsoft.Json.JsonConvert.DeserializeObject<Message>(result);
+
+            var track = message.Tracks.First();
+
+            return new Song(track.Title, track.Artist);
+        }
+
+        public async Task<Song> ScrapAsync(string uri)
+        {
+            var result = await _httpClient.GetAsync(uri);
+
+            var message = Newtonsoft.Json.JsonConvert.DeserializeObject<Message>(result);
+
+            var track = message.Tracks.First();
+
+            return new Song(track.Title, track.Artist);
         }
     }
 }

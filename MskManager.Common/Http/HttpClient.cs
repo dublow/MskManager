@@ -10,26 +10,26 @@ namespace MskManager.Common.Http
 {
     public class HttpClient : IHttpClient
     {
-        public T Get<T>(string uri, Func<string, T> parser)
+        public string Get(string uri)
         {
             var webRequest = WebRequest.Create(uri);
             using (var rs = webRequest.GetResponse())
             {
                 using (var webResponse = new StreamReader(rs.GetResponseStream()))
                 {
-                    return parser(webResponse.ReadToEnd());
+                    return webResponse.ReadToEnd();
                 }
             }
         }
 
-        public async Task<T> GetAsync<T>(string uri, Func<Task<string>, Task<T>> parser)
+        public async Task<string> GetAsync(string uri)
         {
             var webRequest = WebRequest.Create(uri);
             using (var rs = await webRequest.GetResponseAsync())
             {
                 using (var webResponse = new StreamReader(rs.GetResponseStream()))
                 {
-                    return await parser(webResponse.ReadToEndAsync());
+                    return await webResponse.ReadToEndAsync();
                 }
             }
         }

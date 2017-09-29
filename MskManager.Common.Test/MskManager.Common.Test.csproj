@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{365C1D68-9405-4C9D-AB11-6914A5E91D35}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>MskManager.Scrapper</RootNamespace>
-    <AssemblyName>MskManager.Scrapper</AssemblyName>
+    <ProjectGuid>{99FEEA0E-5DF5-4F5A-953C-2661D1FBA69A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MskManager.Common.Test</RootNamespace>
+    <AssemblyName>MskManager.Common.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,11 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Castle.Core, Version=4.1.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.1.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.127.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.127\lib\net45\Moq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,23 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Djam\Message.cs" />
-    <Compile Include="Models\Djam\Spotify.cs" />
-    <Compile Include="Models\Djam\Deezer.cs" />
-    <Compile Include="Models\Djam\Track.cs" />
-    <Compile Include="Models\Song.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Configurations\Scrapper\ScrapperConfigurationBuilder.cs" />
+    <Compile Include="Http\HttpClientBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scrappers\DjamScrapper.cs" />
-    <Compile Include="Scrappers\IScrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MskManager.Common\MskManager.Common.csproj">
-      <Project>{BDBF1722-01BE-48DC-946D-AE18A63FBE4E}</Project>
+      <Project>{bdbf1722-01be-48dc-946d-ae18a63fbe4e}</Project>
       <Name>MskManager.Common</Name>
     </ProjectReference>
   </ItemGroup>

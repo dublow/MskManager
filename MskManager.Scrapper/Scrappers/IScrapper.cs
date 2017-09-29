@@ -9,6 +9,7 @@ namespace MskManager.Scrapper.Scrappers
 {
     public interface IScrapper
     {
-        Song Scrap();
+        Song Scrap(string uri);
+        Task<Song> ScrapAsync(string uri);
     }
 }

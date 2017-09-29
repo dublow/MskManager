@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,9 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\Scrapper\IRadioConfiguration.cs" />
+    <Compile Include="Configurations\Scrapper\IScrapperConfiguration.cs" />
+    <Compile Include="Configurations\Scrapper\RadioCollection.cs" />
+    <Compile Include="Configurations\Scrapper\RadioElement.cs" />
+    <Compile Include="Configurations\Scrapper\ScrapperConfiguration.cs" />
+    <Compile Include="Configurations\Scrapper\ScrapperSection.cs" />
     <Compile Include="Http\HttpClient.cs" />
     <Compile Include="Http\IHttpClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
