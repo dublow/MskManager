@@ -50,10 +50,12 @@
     <Compile Include="Models\Djam\Spotify.cs" />
     <Compile Include="Models\Djam\Deezer.cs" />
     <Compile Include="Models\Djam\Track.cs" />
+    <Compile Include="Models\Fip\Track.cs" />
     <Compile Include="Models\Song.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scrappers\DjamScrapper.cs" />
+    <Compile Include="Scrappers\FipScrapper.cs" />
     <Compile Include="Scrappers\IScrapper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,5 +68,6 @@
       <Name>MskManager.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

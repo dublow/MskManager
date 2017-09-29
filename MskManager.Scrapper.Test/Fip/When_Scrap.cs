@@ -5,13 +5,13 @@ using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
 
-namespace MskManager.Scrapper.Test.Djam
+namespace MskManager.Scrapper.Test.Fip
 {
     [TestFixture]
     public class When_Scrap
     {
-        private const string uri = "djam";
-        private const string fileName = "Djam.Ressources.message.json";
+        private const string uri = "fip";
+        private const string fileName = "Fip.Ressources.message.json";
 
         [Test]
         public void When_scrap_with_valid_message_return_success()
@@ -23,12 +23,12 @@ namespace MskManager.Scrapper.Test.Djam
                 .WithGet(uri, message)
                 .Build();
 
-            var scrapper = new DjamScrapper(httpClient);
+            var scrapper = new FipScrapper(httpClient);
 
             var actual = scrapper.Scrap(uri);
 
-            Assert.AreEqual("Willie Wright", actual.Artist);
-            Assert.AreEqual("Love Is Expensive", actual.Title);
+            Assert.AreEqual("VINICIO CAPOSSELA", actual.Artist);
+            Assert.AreEqual("L ACQUA CHIARA ALLA FONTANA", actual.Title);
         }
 
         [Test]
@@ -41,12 +41,12 @@ namespace MskManager.Scrapper.Test.Djam
                 .WithGetAsync(uri, message)
                 .Build();
 
-            var scrapper = new DjamScrapper(httpClient);
+            var scrapper = new FipScrapper(httpClient);
 
             var actual = await scrapper.ScrapAsync(uri);
 
-            Assert.AreEqual("Willie Wright", actual.Artist);
-            Assert.AreEqual("Love Is Expensive", actual.Title);
+            Assert.AreEqual("VINICIO CAPOSSELA", actual.Artist);
+            Assert.AreEqual("L ACQUA CHIARA ALLA FONTANA", actual.Title);
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace MskManager.Scrapper.Test.Djam
                 .WithGet(uri, null)
                 .Build();
 
-            var scrapper = new DjamScrapper(httpClient);
+            var scrapper = new FipScrapper(httpClient);
 
             Assert.Throws<ArgumentNullException>(() => scrapper.Scrap(uri));
         }
@@ -70,7 +70,7 @@ namespace MskManager.Scrapper.Test.Djam
                 .WithGetAsync(uri, null)
                 .Build();
 
-            var scrapper = new DjamScrapper(httpClient);
+            var scrapper = new FipScrapper(httpClient);
 
             Assert.ThrowsAsync<ArgumentNullException>(() => scrapper.ScrapAsync(uri));
         }

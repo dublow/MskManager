@@ -1,9 +1,9 @@
-﻿using System;
-using MskManager.Scrapper.Models;
+﻿using MskManager.Common.Extensions;
 using MskManager.Common.Http;
-using System.Threading.Tasks;
+using MskManager.Scrapper.Models;
 using MskManager.Scrapper.Models.Djam;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MskManager.Scrapper.Scrappers
 {
@@ -19,20 +19,18 @@ namespace MskManager.Scrapper.Scrappers
         public Song Scrap(string uri)
         {
             var result = _httpClient.Get(uri);
-
-            var message = Newtonsoft.Json.JsonConvert.DeserializeObject<Message>(result);
-
-            var track = message.Tracks.First();
-
-            return new Song(track.Title, track.Artist);
+            return GetSong(result);
         }
 
         public async Task<Song> ScrapAsync(string uri)
         {
             var result = await _httpClient.GetAsync(uri);
+            return GetSong(result);
+        }
 
-            var message = Newtonsoft.Json.JsonConvert.DeserializeObject<Message>(result);
-
+        private Song GetSong(string value)
+        {
+            var message = value.Deserialize<Message>();
             var track = message.Tracks.First();
 
             return new Song(track.Title, track.Artist);
