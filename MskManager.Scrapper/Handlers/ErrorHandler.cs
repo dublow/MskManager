@@ -26,7 +26,8 @@ namespace MskManager.Scrapper.Handlers
 
         private static Response HandleException(NancyContext context, Exception exception, IResponseNegotiator responseNegotiator)
         {
-            // Log
+            LogException(context, exception);
+
             return CreateNegociatedResponse(context, exception, responseNegotiator);
         }
 

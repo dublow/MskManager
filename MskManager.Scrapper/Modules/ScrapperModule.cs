@@ -3,12 +3,8 @@ using MskManager.Common.Nancy.HandleError.Exceptions;
 using MskManager.Scrapper.Parsers;
 using MskManager.Scrapper.Scrappers;
 using Nancy;
-using Nancy.TinyIoc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MskManager.Scrapper.Modules
 {
@@ -26,14 +22,12 @@ namespace MskManager.Scrapper.Modules
 
             Get["/Get/{radio}"] = parameters =>
             {
-                var radioName = (string)parameters.radio;
-
-                if(!TryGetRadio(radioName, out IRadioConfiguration radioConfiguration))
+                if(!TryGetRadio((string)parameters.radio, out IRadioConfiguration radioConfiguration))
                 {
-                    throw new NotFoundErrorException($"Radio {radioName} not found");
+                    throw new NotFoundErrorException($"Radio {(string)parameters.radio} not found");
                 }
                 
-                var parser = GetParser(radioName);
+                var parser = GetParser(radioConfiguration.Name);
 
                 var song = _scrapper.Scrap(radioConfiguration.Uri, parser);
 
