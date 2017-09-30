@@ -1,15 +1,11 @@
 ﻿using Nancy;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Nancy.Bootstrapper;
 using Nancy.TinyIoc;
 using MskManager.Common.Configurations.Scrapper;
 using MskManager.Common.Http;
 using MskManager.Scrapper.Scrappers;
-using System.Reflection;
 using MskManager.Scrapper.Parsers;
 using Nancy.Responses.Negotiation;
 using MskManager.Scrapper.Handlers;
