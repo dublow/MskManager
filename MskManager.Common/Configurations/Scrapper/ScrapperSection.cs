@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace MskManager.Scrapper.Configurations
+namespace MskManager.Common.Configurations
 {
     public class ScrapperSection : ConfigurationSection
     {

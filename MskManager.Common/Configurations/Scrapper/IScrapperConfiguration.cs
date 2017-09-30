@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MskManager.Scrapper.Configurations
+namespace MskManager.Common.Configurations
 {
     public interface IScrapperConfiguration
     {

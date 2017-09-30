@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
 
-namespace MskManager.Scrapper.Configurations
+namespace MskManager.Common.Configurations
 {
     public class RadioCollection: ConfigurationElementCollection, IEnumerable<IRadioConfiguration>
     {

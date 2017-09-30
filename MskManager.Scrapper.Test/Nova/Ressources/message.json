@@ -1,0 +1,24 @@
+﻿{
+  "radio": {
+    "name": "Radio Nova",
+    "is_on_air_activated": "1",
+    "high_def_stream_url": "http:\/\/radionova.ice.infomaniak.ch:80\/novazz-128.mp3",
+    "low_def_stream_url": "http:\/\/radionova.ice.infomaniak.ch:80\/radionova-low.mp3",
+    "thumbnail": "\/sites\/default\/files\/styles\/thumb_player\/public\/2017-06\/Grand_Mix_460x460.jpg?itok=tvTxS6DJ",
+    "image": "\/sites\/default\/files\/2017-06\/Grand_Mix_460x460.jpg",
+    "background_image": "\/sites\/default\/files\/2017-06\/Grand_Mix_825x660.jpg"
+  },
+  "currentShow": null,
+  "currentTrack": {
+    "id": "8273",
+    "title": "SWAMP",
+    "artist": "FUTURO PELO",
+    "image": "/sites/default/files/CQCT/2017-07/futuro-pelo-swamp-8273.jpeg",
+    "thumbnail": "/sites/default/files/CQCT/2017-07/futuro-pelo-swamp-8273-thumbnail-8273.jpeg",
+    "diffusion_date": "2017-09-29 17:25:50",
+    "duration": "02:45",
+    "spotify_url": "https://open.spotify.com/track/0EtgBQdaNxPoG3zrQoAjNg",
+    "deezer_url": "https://www.deezer.com/track/141105569",
+    "itunes_url": "https://itunes.apple.com/WebObjects/MZStore.woa/wa/search?term=FUTURO+PELO+SWAMP&media=music&entity=song&at=10ltae&ct=cetaitkoicetitre"
+  }
+}
