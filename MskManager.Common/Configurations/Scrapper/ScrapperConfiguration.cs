@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
 
-namespace MskManager.Common.Configurations
+namespace MskManager.Common.Configurations.Scrapper
 {
     public class ScrapperConfiguration : IScrapperConfiguration
     {

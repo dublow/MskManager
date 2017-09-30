@@ -1,5 +1,6 @@
 ﻿using Moq;
 using MskManager.Common.Configurations;
+using MskManager.Common.Configurations.Scrapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;

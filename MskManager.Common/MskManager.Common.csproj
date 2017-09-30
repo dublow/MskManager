@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Nancy, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nancy.1.4.4\lib\net40\Nancy.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -44,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\Nancy\INancyConfiguration.cs" />
+    <Compile Include="Configurations\Nancy\NancyConfiguration.cs" />
+    <Compile Include="Configurations\Nancy\NancySection.cs" />
     <Compile Include="Configurations\Scrapper\IRadioConfiguration.cs" />
     <Compile Include="Configurations\Scrapper\IScrapperConfiguration.cs" />
     <Compile Include="Configurations\Scrapper\RadioCollection.cs" />
@@ -55,6 +61,15 @@
     <Compile Include="Extensions\JsonExtensions.cs" />
     <Compile Include="Http\HttpClient.cs" />
     <Compile Include="Http\IHttpClient.cs" />
+    <Compile Include="Nancy\HandleError\Exceptions\InternalServerErrorException.cs" />
+    <Compile Include="Nancy\HandleError\Exceptions\NotFoundErrorException.cs" />
+    <Compile Include="Nancy\HandleError\Exceptions\GeneralServiceErrorException.cs" />
+    <Compile Include="Nancy\HandleError\Exceptions\IHasHttpServiceError.cs" />
+    <Compile Include="Nancy\HandleError\HttpServiceErrorDefinition.cs" />
+    <Compile Include="Nancy\HandleError\HttpServiceErrorUtilities.cs" />
+    <Compile Include="Nancy\HandleError\Models\HttpServiceError.cs" />
+    <Compile Include="Nancy\HandleError\Models\ServiceErrorCode.cs" />
+    <Compile Include="Nancy\HandleError\Models\ServiceErrorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace MskManager.Common.Configurations
+﻿namespace MskManager.Common.Configurations.Scrapper
 {
     public interface IRadioConfiguration
     {

@@ -1,5 +1,6 @@
 ﻿using MskManager.Common.Exceptions;
 using MskManager.Common.Test.Http;
+using MskManager.Scrapper.Parsers;
 using MskManager.Scrapper.Scrappers;
 using MskManager.Scrapper.Test.Helpers;
 using NUnit.Framework;
@@ -24,9 +25,9 @@ namespace MskManager.Scrapper.Test.Fip
                 .WithGet(uri, message)
                 .Build();
 
-            var scrapper = new RadioScrapper(httpClient, Parsors.Fip);
+            var scrapper = new RadioScrapper(httpClient);
 
-            var actual = scrapper.Scrap(uri);
+            var actual = scrapper.Scrap(uri, new FipParser());
 
             Assert.AreEqual("VINICIO CAPOSSELA", actual.Artist);
             Assert.AreEqual("L ACQUA CHIARA ALLA FONTANA", actual.Title);
@@ -42,9 +43,9 @@ namespace MskManager.Scrapper.Test.Fip
                 .WithGetAsync(uri, message)
                 .Build();
 
-            var scrapper = new RadioScrapper(httpClient, Parsors.Fip);
+            var scrapper = new RadioScrapper(httpClient);
 
-            var actual = await scrapper.ScrapAsync(uri);
+            var actual = await scrapper.ScrapAsync(uri, new FipParser());
 
             Assert.AreEqual("VINICIO CAPOSSELA", actual.Artist);
             Assert.AreEqual("L ACQUA CHIARA ALLA FONTANA", actual.Title);
@@ -58,9 +59,9 @@ namespace MskManager.Scrapper.Test.Fip
                 .WithGet(uri, null)
                 .Build();
 
-            var scrapper = new RadioScrapper(httpClient, Parsors.Fip);
+            var scrapper = new RadioScrapper(httpClient);
 
-            var actual = Assert.Throws<ParsorException>(() => scrapper.Scrap(uri));
+            var actual = Assert.Throws<ParsorException>(() => scrapper.Scrap(uri, new FipParser()));
             Assert.AreEqual("Fip", actual.Message);
         }
 
@@ -72,9 +73,9 @@ namespace MskManager.Scrapper.Test.Fip
                 .WithGetAsync(uri, null)
                 .Build();
 
-            var scrapper = new RadioScrapper(httpClient, Parsors.Fip);
+            var scrapper = new RadioScrapper(httpClient);
 
-            var actual = Assert.Throws<ParsorException>(() => scrapper.Scrap(uri));
+            var actual = Assert.Throws<ParsorException>(() => scrapper.Scrap(uri, new FipParser()));
             Assert.AreEqual("Fip", actual.Message);
         }
     }

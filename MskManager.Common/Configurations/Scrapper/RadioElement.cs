@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace MskManager.Common.Configurations
+namespace MskManager.Common.Configurations.Scrapper
 {
     public class RadioElement : ConfigurationElement, IRadioConfiguration
     {
