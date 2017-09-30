@@ -50,6 +50,8 @@
     <Compile Include="Configurations\Scrapper\RadioElement.cs" />
     <Compile Include="Configurations\Scrapper\ScrapperConfiguration.cs" />
     <Compile Include="Configurations\Scrapper\ScrapperSection.cs" />
+    <Compile Include="Exceptions\HttpClientException.cs" />
+    <Compile Include="Exceptions\ParsorException.cs" />
     <Compile Include="Extensions\JsonExtensions.cs" />
     <Compile Include="Http\HttpClient.cs" />
     <Compile Include="Http\IHttpClient.cs" />

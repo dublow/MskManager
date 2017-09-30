@@ -1,7 +1,5 @@
-﻿using MskManager.Common.Extensions;
-using MskManager.Common.Http;
+﻿using MskManager.Common.Http;
 using MskManager.Scrapper.Models;
-using MskManager.Scrapper.Models.Nova;
 using System;
 using System.Threading.Tasks;
 
@@ -21,6 +19,7 @@ namespace MskManager.Scrapper.Scrappers
         public Song Scrap(string uri)
         {
             var result = _httpClient.Get(uri);
+
             return _parser(result);
         }
 
@@ -29,7 +28,5 @@ namespace MskManager.Scrapper.Scrappers
             var result = await _httpClient.GetAsync(uri);
             return _parser(result);
         }
-
-        
     }
 }

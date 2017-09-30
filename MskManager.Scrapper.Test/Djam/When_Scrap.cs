@@ -1,4 +1,5 @@
-﻿using MskManager.Common.Test.Http;
+﻿using MskManager.Common.Exceptions;
+using MskManager.Common.Test.Http;
 using MskManager.Scrapper.Scrappers;
 using MskManager.Scrapper.Test.Helpers;
 using NUnit.Framework;
@@ -59,7 +60,8 @@ namespace MskManager.Scrapper.Test.Djam
 
             var scrapper = new RadioScrapper(httpClient, Parsors.Djam);
 
-            Assert.Throws<ArgumentNullException>(() => scrapper.Scrap(uri));
+            var actual = Assert.Throws<ParsorException>(() => scrapper.Scrap(uri));
+            Assert.AreEqual("Djam", actual.Message);
         }
 
         [Test]
@@ -72,7 +74,8 @@ namespace MskManager.Scrapper.Test.Djam
 
             var scrapper = new RadioScrapper(httpClient, Parsors.Djam);
 
-            Assert.ThrowsAsync<ArgumentNullException>(() => scrapper.ScrapAsync(uri));
+            var actual = Assert.Throws<ParsorException>(() => scrapper.Scrap(uri));
+            Assert.AreEqual("Djam", actual.Message);
         }
     }
 }

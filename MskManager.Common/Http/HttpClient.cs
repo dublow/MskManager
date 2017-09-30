@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MskManager.Common.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,25 +13,39 @@ namespace MskManager.Common.Http
     {
         public string Get(string uri)
         {
-            var webRequest = WebRequest.Create(uri);
-            using (var rs = webRequest.GetResponse())
+            try
             {
-                using (var webResponse = new StreamReader(rs.GetResponseStream()))
+                var webRequest = WebRequest.Create(uri);
+                using (var rs = webRequest.GetResponse())
                 {
-                    return webResponse.ReadToEnd();
+                    using (var webResponse = new StreamReader(rs.GetResponseStream()))
+                    {
+                        return webResponse.ReadToEnd();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new HttpClientException(uri, ex);
             }
         }
 
         public async Task<string> GetAsync(string uri)
         {
-            var webRequest = WebRequest.Create(uri);
-            using (var rs = await webRequest.GetResponseAsync())
+            try
             {
-                using (var webResponse = new StreamReader(rs.GetResponseStream()))
+                var webRequest = WebRequest.Create(uri);
+                using (var rs = await webRequest.GetResponseAsync())
                 {
-                    return await webResponse.ReadToEndAsync();
+                    using (var webResponse = new StreamReader(rs.GetResponseStream()))
+                    {
+                        return await webResponse.ReadToEndAsync();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new HttpClientException($"Async > {uri}", ex);
             }
         }
     }
