@@ -11,7 +11,7 @@ namespace MskManager.Scrapper.Parsers
         public FipParser() : base("Fip")
         { }
 
-        protected override Func<string, Song> Parser =>  (value) =>
+        protected override Func<string, Song> Parser =>  value =>
         {
             var jObject = JObject.Parse(value);
 
@@ -24,12 +24,9 @@ namespace MskManager.Scrapper.Parsers
 
             var track = trackAsJson.Deserialize<Models.Fip.Track>();
 
-            if(track == null)
-            {
-                return Song.Empty;
-            }
-
-            return new Song(track.Title, track.Authors);
+            return track == null 
+                ? Song.Empty 
+                : new Song(track.Title, track.Authors);
         };
     }
 }

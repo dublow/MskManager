@@ -3,12 +3,14 @@ using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Responses.Negotiation;
 using System;
+using NLog;
 
 namespace MskManager.Scrapper.Handlers
 {
     public static class ErrorHandler
     {
-        // Todo log
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
         public static void Enable(IPipelines pipelines, IResponseNegotiator responseNegotiator)
         {
             if(pipelines == null)
@@ -26,7 +28,7 @@ namespace MskManager.Scrapper.Handlers
 
         private static Response HandleException(NancyContext context, Exception exception, IResponseNegotiator responseNegotiator)
         {
-            LogException(context, exception);
+            LogException(exception);
 
             return CreateNegociatedResponse(context, exception, responseNegotiator);
         }
@@ -43,12 +45,12 @@ namespace MskManager.Scrapper.Handlers
             return responseNegotiator.NegotiateResponse(negociator, context);
         }
 
-        private static void LogException(NancyContext context, Exception exception)
+        private static void LogException(Exception exception)
         {
-            //if (log.IsErrorEnabled)
-            //{
-            //    log.ErrorFormat("An exception occured during processing a request. (Exception={0}).", exception);
-            //}
+            if (Logger.IsErrorEnabled)
+            {
+                Logger.Error(exception);
+            }
         }
     }
 }

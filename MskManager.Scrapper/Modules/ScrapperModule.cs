@@ -1,4 +1,5 @@
-﻿using MskManager.Common.Configurations.Scrapper;
+﻿using System;
+using MskManager.Common.Configurations.Scrapper;
 using MskManager.Common.Nancy.HandleError.Exceptions;
 using MskManager.Scrapper.Parsers;
 using MskManager.Scrapper.Scrappers;
@@ -11,25 +12,24 @@ namespace MskManager.Scrapper.Modules
     public class ScrapperModule : NancyModule
     {
         private readonly IScrapperConfiguration _scrapperConfiguration;
-        private readonly IScrapper _scrapper;
         private readonly IEnumerable<IParser> _parsers;
 
-        public ScrapperModule(IScrapperConfiguration scrapperConfiguration, IScrapper scrapper, IEnumerable<IParser> parsers) : base("Radio")
+        public ScrapperModule(IScrapperConfiguration scrapperConfiguration, IScrapper scrapper,
+            IEnumerable<IParser> parsers) : base("Radio")
         {
             _scrapperConfiguration = scrapperConfiguration;
-            _scrapper = scrapper;
             _parsers = parsers;
 
             Get["/Get/{radio}"] = parameters =>
             {
-                if(!TryGetRadio((string)parameters.radio, out IRadioConfiguration radioConfiguration))
+                if (!TryGetRadio((string) parameters.radio, out var radioConfiguration))
                 {
-                    throw new NotFoundErrorException($"Radio {(string)parameters.radio} not found");
+                    throw new NotFoundErrorException($"Radio {(string) parameters.radio} not found");
                 }
-                
+
                 var parser = GetParser(radioConfiguration.Name);
 
-                var song = _scrapper.Scrap(radioConfiguration.Uri, parser);
+                var song = scrapper.Scrap(radioConfiguration.Uri, parser);
 
                 return Response.AsJson(song);
             };
@@ -38,19 +38,22 @@ namespace MskManager.Scrapper.Modules
         private bool TryGetRadio(string radioName, out IRadioConfiguration radioConfiguration)
         {
             radioConfiguration = null;
-            var exists =_scrapperConfiguration.RadioConfigurations.Any(x => x.Name.ToLower() == radioName.ToLower());
+
+            var radioExists = _scrapperConfiguration.RadioConfigurations.Any(x =>
+                String.Equals(x.Name, radioName, StringComparison.CurrentCultureIgnoreCase));
             
-            if(exists)
+            if(radioExists)
             {
-                radioConfiguration = _scrapperConfiguration.RadioConfigurations.Single(x => x.Name.ToLower() == radioName.ToLower());
+                radioConfiguration = _scrapperConfiguration.RadioConfigurations.Single(x =>
+                    String.Equals(x.Name, radioName, StringComparison.CurrentCultureIgnoreCase));
             }
 
-            return exists;
+            return radioExists;
         }
 
         private IParser GetParser(string radioName)
         {
-            return _parsers.Single(p => p.Name.ToLower() == radioName.ToLower());
+            return _parsers.Single(p => String.Equals(p.Name, radioName, StringComparison.CurrentCultureIgnoreCase));
         }
     }
 }

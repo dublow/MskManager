@@ -10,7 +10,7 @@ namespace MskManager.Scrapper.Parsers
         public DjamParser() : base("Djam")
         { }
 
-        protected override Func<string, Song> Parser => (value) =>
+        protected override Func<string, Song> Parser => value =>
         {
             var message = value.Deserialize<Models.Djam.Message>();
 
@@ -20,7 +20,10 @@ namespace MskManager.Scrapper.Parsers
             }
 
             var track = message.Tracks.FirstOrDefault();
-            return new Song(track.Title, track.Artist);
+
+            return track == null 
+                ? Song.Empty 
+                : new Song(track.Title, track.Artist);
         };
     }
 }

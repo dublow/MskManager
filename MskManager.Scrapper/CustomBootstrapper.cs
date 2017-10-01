@@ -34,7 +34,6 @@ namespace MskManager.Scrapper
             get
             {
                 return NancyInternalConfiguration.WithOverrides(config => {
-                    config.StatusCodeHandlers = new[] { typeof(StatusCodeHandler404), typeof(StatusCodeHandler500) };
                     config.ResponseProcessors = new[] { typeof(JsonProcessor) };
                 });
             }
