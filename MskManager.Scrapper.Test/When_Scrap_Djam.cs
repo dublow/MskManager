@@ -4,16 +4,15 @@ using MskManager.Scrapper.Parsers;
 using MskManager.Scrapper.Scrappers;
 using MskManager.Scrapper.Test.Helpers;
 using NUnit.Framework;
-using System;
 using System.Threading.Tasks;
 
 namespace MskManager.Scrapper.Test.Djam
 {
     [TestFixture]
-    public class When_Scrap
+    public class When_Scrap_Djam
     {
         private const string uri = "djam";
-        private const string fileName = "Djam.Ressources.message.json";
+        private const string fileName = "Ressources.Djam.message.json";
 
         [Test]
         public void When_scrap_with_valid_message_return_success()

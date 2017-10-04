@@ -4,16 +4,15 @@ using MskManager.Scrapper.Parsers;
 using MskManager.Scrapper.Scrappers;
 using MskManager.Scrapper.Test.Helpers;
 using NUnit.Framework;
-using System;
 using System.Threading.Tasks;
 
-namespace MskManager.Scrapper.Test.Nova
+namespace MskManager.Scrapper.Test.Fip
 {
     [TestFixture]
     public class When_Scrap
     {
-        private const string uri = "nova";
-        private const string fileName = "Nova.Ressources.message.json";
+        private const string uri = "fip";
+        private const string fileName = "Ressources.Fip.message.json";
 
         [Test]
         public void When_scrap_with_valid_message_return_success()
@@ -27,10 +26,10 @@ namespace MskManager.Scrapper.Test.Nova
 
             var scrapper = new RadioScrapper(httpClient);
 
-            var actual = scrapper.Scrap(uri, new NovaParser());
+            var actual = scrapper.Scrap(uri, new FipParser());
 
-            Assert.AreEqual("FUTURO PELO", actual.Artist);
-            Assert.AreEqual("SWAMP", actual.Title);
+            Assert.AreEqual("VINICIO CAPOSSELA", actual.Artist);
+            Assert.AreEqual("L ACQUA CHIARA ALLA FONTANA", actual.Title);
         }
 
         [Test]
@@ -45,10 +44,10 @@ namespace MskManager.Scrapper.Test.Nova
 
             var scrapper = new RadioScrapper(httpClient);
 
-            var actual = await scrapper.ScrapAsync(uri, new NovaParser());
+            var actual = await scrapper.ScrapAsync(uri, new FipParser());
 
-            Assert.AreEqual("FUTURO PELO", actual.Artist);
-            Assert.AreEqual("SWAMP", actual.Title);
+            Assert.AreEqual("VINICIO CAPOSSELA", actual.Artist);
+            Assert.AreEqual("L ACQUA CHIARA ALLA FONTANA", actual.Title);
         }
 
         [Test]
@@ -61,8 +60,8 @@ namespace MskManager.Scrapper.Test.Nova
 
             var scrapper = new RadioScrapper(httpClient);
 
-            var actual = Assert.Throws<ParsorException>(() => scrapper.Scrap(uri, new NovaParser()));
-            Assert.AreEqual("Nova", actual.Message);
+            var actual = Assert.Throws<ParsorException>(() => scrapper.Scrap(uri, new FipParser()));
+            Assert.AreEqual("Fip", actual.Message);
         }
 
         [Test]
@@ -75,8 +74,8 @@ namespace MskManager.Scrapper.Test.Nova
 
             var scrapper = new RadioScrapper(httpClient);
 
-            var actual = Assert.Throws<ParsorException>(() => scrapper.Scrap(uri, new NovaParser()));
-            Assert.AreEqual("Nova", actual.Message);
+            var actual = Assert.Throws<ParsorException>(() => scrapper.Scrap(uri, new FipParser()));
+            Assert.AreEqual("Fip", actual.Message);
         }
     }
 }
