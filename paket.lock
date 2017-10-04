@@ -1,10 +1,14 @@
 NUGET
   remote: https://www.nuget.org/api/v2
     Castle.Core (4.1.1) - restriction: >= net461
+    CsQuery (1.3.3) - restriction: >= net461
     Moq (4.7.127) - restriction: >= net461
       Castle.Core (>= 4.1.1) - restriction: || (>= net45) (>= netstandard1.3)
     Nancy (1.4.4) - restriction: >= net461
     Nancy.Hosting.Self (1.4.1) - restriction: >= net461
+      Nancy (>= 1.4.1)
+    Nancy.Testing (1.4.1) - restriction: >= net461
+      CsQuery (>= 1.3.3)
       Nancy (>= 1.4.1)
     Newtonsoft.Json (10.0.3) - restriction: >= net461
     NLog (4.4.12) - restriction: >= net461

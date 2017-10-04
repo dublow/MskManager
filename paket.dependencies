@@ -1,8 +1,10 @@
 source https://www.nuget.org/api/v2
 nuget Castle.Core 4.1.1 restriction: >= net461
+nuget CsQuery 1.3.3 restriction: >= net461
 nuget Moq 4.7.127 restriction: >= net461
 nuget Nancy 1.4.4 restriction: >= net461
 nuget Nancy.Hosting.Self 1.4.1 restriction: >= net461
+nuget Nancy.Testing 1.4.1 restriction: >= net461
 nuget Newtonsoft.Json 10.0.3 restriction: >= net461
 nuget NLog 4.4.12 restriction: >= net461
 nuget NUnit 3.8.1 restriction: >= net461
