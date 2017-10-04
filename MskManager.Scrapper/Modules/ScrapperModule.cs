@@ -33,6 +33,20 @@ namespace MskManager.Scrapper.Modules
 
                 return Response.AsJson(song);
             };
+
+            Get["/GetAsync/{radio}", true] = async (parameters, ct) =>
+            {
+                if (!TryGetRadio((string)parameters.radio, out var radioConfiguration))
+                {
+                    throw new NotFoundErrorException($"Radio {(string)parameters.radio} not found");
+                }
+
+                var parser = GetParser(radioConfiguration.Name);
+
+                var song = await scrapper.ScrapAsync(radioConfiguration.Uri, parser);
+
+                return Response.AsJson(song);
+            };
         }
 
         private bool TryGetRadio(string radioName, out IRadioConfiguration radioConfiguration)
