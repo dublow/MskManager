@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\RadioModuleInfo.cs" />
     <Compile Include="When_Call_Module.cs" />
     <Compile Include="When_Scrap_Djam.cs" />
     <Compile Include="When_Scrap_Fip.cs" />
