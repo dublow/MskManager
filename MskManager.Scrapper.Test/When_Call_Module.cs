@@ -1,12 +1,16 @@
 ﻿using MskManager.Common.Extensions;
+using MskManager.Common.Nancy.HandleError;
+using MskManager.Common.Nancy.HandleError.Models;
 using MskManager.Common.Test.Configurations.Scrapper;
 using MskManager.Common.Test.Http;
+using MskManager.Scrapper.Handlers;
 using MskManager.Scrapper.Models;
 using MskManager.Scrapper.Modules;
 using MskManager.Scrapper.Parsers;
 using MskManager.Scrapper.Scrappers;
 using MskManager.Scrapper.Test.Helpers;
 using MskManager.Scrapper.Test.Models;
+using Nancy.Responses.Negotiation;
 using Nancy.Testing;
 using NUnit.Framework;
 using System;
@@ -45,15 +49,30 @@ namespace MskManager.Scrapper.Test
         }
 
         [Test]
-        public void ScrapperModule_GetNotFound_ReturnNotFoundError()
+        public void ScrapperModule_EndpointNotFound_ReturnNotFoundError()
+        {
+            var radioModuleInfo = new RadioModuleInfo("Djam", "djam-url", "/Radio/Uncknown/Djam", new DjamParser(),
+                    HttpServiceErrorDefinition.NotFoundError.ServiceErrorModel);
+
+            ScrapperModule_GetRadio<ServiceErrorModel>(radioModuleInfo, ServiceErrorModelAreEqual);
+        }
+
+        [Test]
+        public void ScrapperModule_RadioNotFound_ReturnNotFoundError()
         {
             var radioModuleInfo = new RadioModuleInfo("Djam", "djam-url", "/Radio/GetAsync/Uncknown", new DjamParser(),
-                    new Song("Love Is Expensive", "Willie Wright"));
+                    HttpServiceErrorDefinition.NotFoundError.ServiceErrorModel);
 
-            var exception = Assert.Throws<Exception>(() => 
-                ScrapperModule_GetRadio<object>(radioModuleInfo, null));
+            ScrapperModule_GetRadio<ServiceErrorModel>(radioModuleInfo, ServiceErrorModelAreEqual);
+        }
 
-            Assert.IsNotNull(exception);
+        [Test]
+        public void ScrapperModule_InvalidParser_ReturnGeneralError()
+        {
+            var radioModuleInfo = new RadioModuleInfo("Djam", "djam-url", "/Radio/GetAsync/Djam", new FipParser(),
+                    HttpServiceErrorDefinition.GeneralError.ServiceErrorModel);
+
+            ScrapperModule_GetRadio<ServiceErrorModel>(radioModuleInfo, ServiceErrorModelAreEqual);
         }
 
         private void ScrapperModule_GetRadio<T>(RadioModuleInfo radioModuleInfo, Action<T, T> equal)
@@ -63,7 +82,7 @@ namespace MskManager.Scrapper.Test
 
             var actual = response.Body.AsString().Deserialize<T>();
 
-            equal(actual, (T)Convert.ChangeType(radioModuleInfo.Expected, typeof(T)));
+            equal((T)Convert.ChangeType(radioModuleInfo.Expected, typeof(T)), actual);
         }
 
         private Browser GetBrowser(string radioName, string radioUrl, IParser parser)
@@ -86,6 +105,11 @@ namespace MskManager.Scrapper.Test
                 cfg.Dependency(httpClient);
                 cfg.Dependency<IScrapper>(typeof(RadioScrapper));
                 cfg.Dependency<IEnumerable<IParser>>(parsers);
+                cfg.RequestStartup((container, pipelines, context) => {
+                    ErrorHandler.Enable(pipelines, container.Resolve<IResponseNegotiator>());
+                });
+                cfg.ResponseProcessors(new[] { typeof(JsonProcessor) });
+                cfg.StatusCodeHandlers(new[] { typeof(StatusCodeHandler404), typeof(StatusCodeHandler500) });
             });
         }
 
@@ -94,6 +118,12 @@ namespace MskManager.Scrapper.Test
             Assert.AreEqual(expected.IsEmpty, actual.IsEmpty);
             Assert.AreEqual(expected.Title, actual.Title);
             Assert.AreEqual(expected.Artist, actual.Artist);
+        }
+
+        private void ServiceErrorModelAreEqual(ServiceErrorModel expected, ServiceErrorModel actual)
+        {
+            Assert.AreEqual(expected.Code, actual.Code);
+            Assert.AreEqual(expected.Details, actual.Details);
         }
     }
 }

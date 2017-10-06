@@ -9,9 +9,9 @@ namespace MskManager.Scrapper.Test.Models
         public readonly string Url;
         public readonly string Endpoint;
         public readonly IParser Parser;
-        public readonly Song Expected;
+        public readonly object Expected;
 
-        public RadioModuleInfo(string name, string url, string endpoint, IParser parser, Song expected)
+        public RadioModuleInfo(string name, string url, string endpoint, IParser parser, object expected)
         {
             Name = name;
             Url = url;
