@@ -2,33 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using MskManager.Common.Bus;
 using MskManager.Common.Bus.Commands;
 using MskManager.Common.Bus.Utils;
-using MskManager.Common.Http;
 using NServiceBus;
-using NServiceBus.Features;
-using NServiceBus.Persistence;
 
-namespace MskManager.Main
+namespace MskManager.Deezer
 {
     class Program
     {
         static void Main(string[] args)
         {
+
             AsyncMain().GetAwaiter().GetResult();
+            Console.ReadLine();
         }
 
         static async Task AsyncMain()
         {
-            Console.Title = "MskManager.Main";
+            Console.Title = "MskManager.Deezer";
 
-            var busInfo = await BusUtils.CreateBus("mskmanager.main", routing =>
-            {
-                routing.RouteToEndpoint(typeof(AddSong), "mskmanager.deezer");
-            });
+            var busInfo = await BusUtils.CreateBus("mskmanager.deezer");
 
             Console.WriteLine("Press enter to exit...");
             Console.ReadLine();

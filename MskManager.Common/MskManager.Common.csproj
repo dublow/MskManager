@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,6 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bus\Commands\AddSong.cs" />
+    <Compile Include="Bus\Utils\BusInfo.cs" />
+    <Compile Include="Bus\Utils\BusUtils.cs" />
+    <Compile Include="Bus\Utils\QueueDeletionUtils.cs" />
+    <Compile Include="Bus\Utils\QueueCreationUtils.cs" />
+    <Compile Include="Bus\Utils\QueueEndpoint.cs" />
     <Compile Include="Configurations\Nancy\INancyConfiguration.cs" />
     <Compile Include="Configurations\Nancy\NancyConfiguration.cs" />
     <Compile Include="Configurations\Nancy\NancySection.cs" />
@@ -86,6 +93,17 @@
       <ItemGroup>
         <Reference Include="Newtonsoft.Json">
           <HintPath>..\packages\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
+      <ItemGroup>
+        <Reference Include="NServiceBus.Core">
+          <HintPath>..\packages\NServiceBus\lib\net452\NServiceBus.Core.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>

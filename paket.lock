@@ -12,4 +12,5 @@ NUGET
       Nancy (>= 1.4.1)
     Newtonsoft.Json (10.0.3) - restriction: >= net461
     NLog (4.4.12) - restriction: >= net461
+    NServiceBus (6.4.1) - restriction: >= net461
     NUnit (3.8.1) - restriction: >= net461

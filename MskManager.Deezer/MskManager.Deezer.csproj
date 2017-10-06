@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D0D1F34E-A4CF-43C5-B20A-5D4108FC6D1A}</ProjectGuid>
+    <ProjectGuid>{9B1E1CCF-BFB3-405F-943F-68B7BF88BF57}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MskManager.Main</RootNamespace>
-    <AssemblyName>MskManager.Main</AssemblyName>
+    <RootNamespace>MskManager.Deezer</RootNamespace>
+    <AssemblyName>MskManager.Deezer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers\AddSongHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
