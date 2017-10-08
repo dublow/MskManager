@@ -12,8 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Main", "MskManag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Common", "MskManager.Common\MskManager.Common.csproj", "{BDBF1722-01BE-48DC-946D-AE18A63FBE4E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{B47579E6-8D2E-404D-95E7-80E76A3367B5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Scrapper", "MskManager.Scrapper\MskManager.Scrapper.csproj", "{365C1D68-9405-4C9D-AB11-6914A5E91D35}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Common.Test", "MskManager.Common.Test\MskManager.Common.Test.csproj", "{99FEEA0E-5DF5-4F5A-953C-2661D1FBA69A}"
@@ -25,6 +23,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Scrapper.Test", "MskManager.Scrapper.Test\MskManager.Scrapper.Test.csproj", "{8E095D81-F614-47CE-A3EA-335C42A20EAF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Deezer", "MskManager.Deezer\MskManager.Deezer.csproj", "{9B1E1CCF-BFB3-405F-943F-68B7BF88BF57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Frontoffice", "MskManager.Frontoffice\MskManager.Frontoffice.csproj", "{A1FDB5ED-4420-403C-8E0B-1EFD7A5EC9FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,16 +56,18 @@ Global
 		{9B1E1CCF-BFB3-405F-943F-68B7BF88BF57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B1E1CCF-BFB3-405F-943F-68B7BF88BF57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B1E1CCF-BFB3-405F-943F-68B7BF88BF57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1FDB5ED-4420-403C-8E0B-1EFD7A5EC9FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1FDB5ED-4420-403C-8E0B-1EFD7A5EC9FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1FDB5ED-4420-403C-8E0B-1EFD7A5EC9FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1FDB5ED-4420-403C-8E0B-1EFD7A5EC9FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{365C1D68-9405-4C9D-AB11-6914A5E91D35} = {B47579E6-8D2E-404D-95E7-80E76A3367B5}
 		{99FEEA0E-5DF5-4F5A-953C-2661D1FBA69A} = {5FFE651A-8D1C-4EEA-98A9-9FFA9D0C0D95}
 		{5B299C5A-0648-41CF-96A9-577EACBED25C} = {5FFE651A-8D1C-4EEA-98A9-9FFA9D0C0D95}
 		{8E095D81-F614-47CE-A3EA-335C42A20EAF} = {5B299C5A-0648-41CF-96A9-577EACBED25C}
-		{9B1E1CCF-BFB3-405F-943F-68B7BF88BF57} = {B47579E6-8D2E-404D-95E7-80E76A3367B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {27A856A0-42EB-4B9A-9944-09D700C92C16}

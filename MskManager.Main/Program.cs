@@ -9,9 +9,6 @@ using MskManager.Common.Bus.Commands;
 using MskManager.Common.Bus.Utils;
 using MskManager.Common.Http;
 using NServiceBus;
-using NServiceBus.Features;
-using NServiceBus.Persistence;
-
 namespace MskManager.Main
 {
     class Program
@@ -25,15 +22,18 @@ namespace MskManager.Main
         {
             Console.Title = "MskManager.Main";
 
-            var busInfo = await BusUtils.CreateBus("mskmanager.main", routing =>
+            var endpoint = await BusUtils.CreateBus("mskmanager.main", routing =>
             {
                 routing.RouteToEndpoint(typeof(AddSong), "mskmanager.deezer");
             });
 
+
+
+
             Console.WriteLine("Press enter to exit...");
             Console.ReadLine();
 
-            await busInfo.EndpointInstance.Stop()
+            await endpoint.Stop()
                 .ConfigureAwait(false);
         }
     }

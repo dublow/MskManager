@@ -45,6 +45,7 @@
     <Compile Include="Handlers\AddSongHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IDeezerRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
