@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.7.2.0\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -71,6 +74,7 @@
     <Compile Include="Nancy\HandleError\Models\HttpServiceError.cs" />
     <Compile Include="Nancy\HandleError\Models\ServiceErrorCode.cs" />
     <Compile Include="Nancy\HandleError\Models\ServiceErrorModel.cs" />
+    <Compile Include="Nancy\Validation\ValidatorHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

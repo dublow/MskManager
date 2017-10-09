@@ -5,13 +5,13 @@ using Nancy;
 using Nancy.ModelBinding;
 using NServiceBus;
 using MskManager.Common.Bus.Commands;
-using Nancy.Validation;
+using MskManager.Common.Nancy.Validation;
 
 namespace MskManager.Frontoffice.Modules
 {
     public class HomeModule : NancyModule
     {
-        public HomeModule(IEndpointInstance endpointInstance) : base("Home")
+        public HomeModule(IEndpointInstance endpointInstance, ValidatorHelper validatorHelper) : base("Home")
         {
             Get["/Index", true] = async (parameters, ct) =>
             {
@@ -23,8 +23,7 @@ namespace MskManager.Frontoffice.Modules
                 return await Task.Run(() =>
                 {
                     var model = this.Bind<DeezerUserModel>();
-                    var validator = new DeezerUserModelValidator();
-                    var validationResult = validator.Validate(model);
+                    var validationResult = validatorHelper.Validate(model);
 
                     if(!validationResult.IsValid)
                     {

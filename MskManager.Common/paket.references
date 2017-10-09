@@ -4,3 +4,4 @@ NServiceBus
 NServiceBus.Metrics
 NServiceBus.Metrics.PerformanceCounters
 NServiceBus.Metrics.PerformanceCounters.MsBuild
+FluentValidation

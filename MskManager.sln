@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{BA2A4A47-A5E6-4208-8CC5-C76899D879F3}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,6 +19,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Scrapper.Test", "MskManager.Scrapper.Test\MskManager.Scrapper.Test.csproj", "{8E095D81-F614-47CE-A3EA-335C42A20EAF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Frontoffice", "MskManager.Frontoffice\MskManager.Frontoffice.csproj", "{A1FDB5ED-4420-403C-8E0B-1EFD7A5EC9FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Persistence", "MskManager.Persistence\MskManager.Persistence.csproj", "{CEB6E87F-B84F-4F8E-8C83-BE1D89ED5CA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +48,10 @@ Global
 		{A1FDB5ED-4420-403C-8E0B-1EFD7A5EC9FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1FDB5ED-4420-403C-8E0B-1EFD7A5EC9FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1FDB5ED-4420-403C-8E0B-1EFD7A5EC9FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEB6E87F-B84F-4F8E-8C83-BE1D89ED5CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEB6E87F-B84F-4F8E-8C83-BE1D89ED5CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEB6E87F-B84F-4F8E-8C83-BE1D89ED5CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEB6E87F-B84F-4F8E-8C83-BE1D89ED5CA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

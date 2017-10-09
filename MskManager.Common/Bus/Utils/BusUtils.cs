@@ -7,11 +7,12 @@ namespace MskManager.Common.Bus.Utils
 {
     public static class BusUtils
     {
-        public static async Task<IEndpointInstance> CreateBus(string endpoint, Action<RoutingSettings> configureRoute = null)
+        public static async Task<IEndpointInstance> CreateBus(string endpoint, Action<EndpointConfiguration, RoutingSettings<MsmqTransport>> configuration = null)
         {
             QueueCreationUtils.CreateQueuesForEndpoint(endpoint, Environment.UserName);
 
             var endpointConfiguration = new EndpointConfiguration(endpoint);
+            
             endpointConfiguration.EnableWindowsPerformanceCounters();
             endpointConfiguration.SendFailedMessagesTo($"{endpoint}.error");
             endpointConfiguration.DisableFeature<MessageDrivenSubscriptions>();
@@ -20,7 +21,7 @@ namespace MskManager.Common.Bus.Utils
             var transport = endpointConfiguration.UseTransport<MsmqTransport>();
            
             var routing = transport.Routing();
-            configureRoute?.Invoke(routing);
+            configuration?.Invoke(endpointConfiguration, routing);
 
             var endpointInstance = await Endpoint.Start(endpointConfiguration)
                 .ConfigureAwait(false);
