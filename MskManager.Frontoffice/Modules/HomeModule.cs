@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using MskManager.Frontoffice.Models;
 using Nancy;
 using Nancy.ModelBinding;
-using Nancy.Routing;
+using NServiceBus;
+using MskManager.Common.Bus.Commands;
+using Nancy.Validation;
 
 namespace MskManager.Frontoffice.Modules
 {
     public class HomeModule : NancyModule
     {
-        public HomeModule() : base("Home")
+        public HomeModule(IEndpointInstance endpointInstance) : base("Home")
         {
             Get["/Index", true] = async (parameters, ct) =>
             {
@@ -23,8 +22,23 @@ namespace MskManager.Frontoffice.Modules
             {
                 return await Task.Run(() =>
                 {
-                    var model = this.Bind<DeezerModel>();
-                    return Response.AsJson(new{success = true});
+                    var model = this.Bind<DeezerUserModel>();
+                    var validator = new DeezerUserModelValidator();
+                    var validationResult = validator.Validate(model);
+
+                    if(!validationResult.IsValid)
+                    {
+                        return Negotiate
+                            .WithModel(validationResult)
+                            .WithStatusCode(HttpStatusCode.BadRequest)
+                            .WithContentType("application/json");
+                    }
+
+                    endpointInstance.Send(new AddDeezerUser { Id = model.Id, AccessToken = model.AccessToken });
+
+                    return Negotiate
+                            .WithModel(new { success = true })
+                            .WithContentType("application/json");
                 });
 
             };
@@ -41,8 +55,6 @@ namespace MskManager.Frontoffice.Modules
                         .WithView("Channel.html");
                 });
             };
-
-
         }
     }
 }

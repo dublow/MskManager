@@ -1,11 +1,9 @@
-﻿using System;
-using System.Linq;
-using MskManager.Common.Configurations.Scrapper;
-using MskManager.Common.Http;
-using Nancy;
+﻿using Nancy;
 using Nancy.Bootstrapper;
-using Nancy.Responses.Negotiation;
 using Nancy.TinyIoc;
+using MskManager.Common.Bus.Utils;
+using System.Threading.Tasks;
+using MskManager.Common.Bus.Commands;
 
 namespace MskManager.Frontoffice
 {
@@ -13,7 +11,16 @@ namespace MskManager.Frontoffice
     {
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
+            ApplicationStartupAsync(container, pipelines).GetAwaiter().GetResult();
+        }
+
+        private async Task ApplicationStartupAsync(TinyIoCContainer container, IPipelines pipelines)
+        {
             
+            var endpointInstance = await BusUtils.CreateBus("mskmanager.frontoffice", route => {
+                route.RouteToEndpoint(typeof(AddDeezerUser), "mskmanager.storage");
+            });
+            container.Register(endpointInstance);
         }
     }
 }
