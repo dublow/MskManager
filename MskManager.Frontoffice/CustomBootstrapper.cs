@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using MskManager.Common.Bus.Commands;
 using MskManager.Common.Nancy.Validation;
+using Nancy.Responses.Negotiation;
 
 namespace MskManager.Frontoffice
 {
@@ -27,12 +28,22 @@ namespace MskManager.Frontoffice
 
 
             var type = typeof(IValidator);
-            var parserTypes = AppDomain.CurrentDomain.GetAssemblies()
+            var validatorTypes = AppDomain.CurrentDomain.GetAssemblies()
                 .Where(a => a.FullName.Contains("MskManager.Frontoffice"))
                 .SelectMany(a => a.GetTypes())
                 .Where(p => type.IsAssignableFrom(p) && p.IsClass && !p.IsAbstract);
 
-            container.RegisterMultiple(type, parserTypes);
+            container.RegisterMultiple(type, validatorTypes);
+        }
+
+        protected override NancyInternalConfiguration InternalConfiguration
+        {
+            get
+            {
+                return NancyInternalConfiguration.WithOverrides(config => {
+                    config.ResponseProcessors = new[] { typeof(JsonProcessor) };
+                });
+            }
         }
     }
 }

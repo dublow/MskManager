@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Frontoffice", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Persistence", "MskManager.Persistence\MskManager.Persistence.csproj", "{CEB6E87F-B84F-4F8E-8C83-BE1D89ED5CA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MskManager.Frontoffice.Test", "MskManager.FrontOffice.Test\MskManager.Frontoffice.Test.csproj", "{6EE0DF62-8D22-4900-BABE-7E2611B55655}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{CEB6E87F-B84F-4F8E-8C83-BE1D89ED5CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEB6E87F-B84F-4F8E-8C83-BE1D89ED5CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEB6E87F-B84F-4F8E-8C83-BE1D89ED5CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE0DF62-8D22-4900-BABE-7E2611B55655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE0DF62-8D22-4900-BABE-7E2611B55655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE0DF62-8D22-4900-BABE-7E2611B55655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE0DF62-8D22-4900-BABE-7E2611B55655}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{99FEEA0E-5DF5-4F5A-953C-2661D1FBA69A} = {5FFE651A-8D1C-4EEA-98A9-9FFA9D0C0D95}
 		{8E095D81-F614-47CE-A3EA-335C42A20EAF} = {5FFE651A-8D1C-4EEA-98A9-9FFA9D0C0D95}
+		{6EE0DF62-8D22-4900-BABE-7E2611B55655} = {5FFE651A-8D1C-4EEA-98A9-9FFA9D0C0D95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {27A856A0-42EB-4B9A-9944-09D700C92C16}

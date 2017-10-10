@@ -27,6 +27,7 @@ namespace MskManager.Frontoffice.Modules
 
                     if(!validationResult.IsValid)
                     {
+
                         return Negotiate
                             .WithModel(validationResult)
                             .WithStatusCode(HttpStatusCode.BadRequest)

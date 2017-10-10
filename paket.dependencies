@@ -1,6 +1,8 @@
 source https://www.nuget.org/api/v2
 nuget Castle.Core 4.1.1 restriction: >= net461
+nuget CommonServiceLocator 1.3 restriction: >= net461
 nuget CsQuery 1.3.3 restriction: >= net461
+nuget Dapper 1.50.2 restriction: >= net461
 nuget FluentValidation 7.2.0 restriction: >= net461
 nuget Moq 4.7.127 restriction: >= net461
 nuget Nancy 1.4.4 restriction: >= net461
@@ -8,8 +10,12 @@ nuget Nancy.Hosting.Self 1.4.1 restriction: >= net461
 nuget Nancy.Testing 1.4.1 restriction: >= net461
 nuget Newtonsoft.Json 10.0.3 restriction: >= net461
 nuget NLog 4.4.12 restriction: >= net461
-nuget NServiceBus 6.4.1 restriction: >= net461
+nuget NServiceBus 6.4.1
 nuget NServiceBus.Metrics 1.1.0 restriction: >= net461
 nuget NServiceBus.Metrics.PerformanceCounters 1.1.2 restriction: >= net461
 nuget NServiceBus.Metrics.PerformanceCounters.MsBuild 1.1.2 restriction: >= net461
+nuget NServiceBus.Testing 6.0.3 restriction: >= net461
+nuget NServiceBus.Unity 7.0.0 restriction: >= net461
 nuget NUnit 3.8.1 restriction: >= net461
+nuget Unity 4.0.1 restriction: >= net461
+nuget Unity.Interception 4.0.1 restriction: >= net461
