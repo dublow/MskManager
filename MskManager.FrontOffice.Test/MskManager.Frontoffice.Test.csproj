@@ -47,6 +47,10 @@
     <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MskManager.Common.Test\MskManager.Common.Test.csproj">
+      <Project>{99FEEA0E-5DF5-4F5A-953C-2661D1FBA69A}</Project>
+      <Name>MskManager.Common.Test</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MskManager.Common\MskManager.Common.csproj">
       <Project>{BDBF1722-01BE-48DC-946D-AE18A63FBE4E}</Project>
       <Name>MskManager.Common</Name>
@@ -55,6 +59,9 @@
       <Project>{a1fdb5ed-4420-403c-8e0b-1efd7a5ec9fa}</Project>
       <Name>MskManager.Frontoffice</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Choose>

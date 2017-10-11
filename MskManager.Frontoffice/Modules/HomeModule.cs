@@ -13,9 +13,8 @@ namespace MskManager.Frontoffice.Modules
     {
         public HomeModule(IEndpointInstance endpointInstance, ValidatorHelper validatorHelper) : base("Home")
         {
-            Get["/Index", true] = async (parameters, ct) =>
-            {
-                return await Task.Run(() => View["Index.html"]);
+            Get["/Index", true] = async (parameters, ct) => {
+                return await Task.Run(() => View["Index"]);
             };
 
             Post["/Deezer", true] = async (parameters, ct) =>
@@ -37,7 +36,6 @@ namespace MskManager.Frontoffice.Modules
                     endpointInstance.Send(new AddDeezerUser { Id = model.Id, AccessToken = model.AccessToken });
 
                     return Negotiate
-                            .WithModel(new { success = true })
                             .WithContentType("application/json");
                 });
 
