@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Configurations\Scrapper\ScrapperConfigurationBuilder.cs" />
     <Compile Include="Http\HttpClientBuilder.cs" />
+    <Compile Include="Nancy\TestingRootPathProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

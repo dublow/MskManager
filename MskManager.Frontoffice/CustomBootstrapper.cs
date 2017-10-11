@@ -41,7 +41,7 @@ namespace MskManager.Frontoffice
             get
             {
                 return NancyInternalConfiguration.WithOverrides(config => {
-                    config.ResponseProcessors = new[] { typeof(JsonProcessor) };
+                    config.ResponseProcessors = new[] { typeof(JsonProcessor), typeof(ViewProcessor) };
                 });
             }
         }

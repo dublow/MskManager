@@ -1,45 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using FluentValidation;
+using FluentValidation.Results;
+using MskManager.Common.Extensions;
 using MskManager.Common.Nancy.Validation;
+using MskManager.Common.Test.Nancy;
 using MskManager.Frontoffice.Models;
 using MskManager.Frontoffice.Modules;
+using Nancy;
 using Nancy.Responses.Negotiation;
 using Nancy.Testing;
 using NServiceBus;
 using NServiceBus.Testing;
 using NUnit.Framework;
-using Nancy;
-using MskManager.Common.Extensions;
-using FluentValidation.Results;
 
-namespace MskManager.FrontOffice.Test
+namespace MskManager.Frontoffice.Test
 {
-    public class TestingRootPathProvider : IRootPathProvider
-    {
-        private static readonly string RootPath;
-
-        static TestingRootPathProvider()
-        {
-            var directoryName = Path.GetDirectoryName(typeof(Frontoffice.CustomBootstrapper).Assembly.CodeBase);
-
-            if (directoryName != null)
-            {
-                var assemblyPath = directoryName.Replace(@"file:\", string.Empty);
-                RootPath = Path.Combine(assemblyPath, "..", "..", "..", "MskManager.Frontoffice");
-            }
-        }
-
-        public string GetRootPath()
-        {
-            return RootPath;
-        }
-    }
     [TestFixture]
     public class When_Call_Module
     {
@@ -147,7 +124,7 @@ namespace MskManager.FrontOffice.Test
                     .FindValidatorsInAssembly(Assembly.Load("MskManager.Frontoffice"))
                     .Select(x => (IValidator)Activator.CreateInstance(x.ValidatorType));
 
-                cfg.RootPathProvider<TestingRootPathProvider>();
+                cfg.RootPathProvider<TestingRootPathProvider<CustomBootstrapper>>();
                 cfg.ViewFactory<TestingViewFactory>();
                 cfg.Module<HomeModule>();
                 cfg.Dependency(new ValidatorHelper(validators));

@@ -50,7 +50,7 @@ namespace MskManager.Frontoffice.Modules
                         .WithHeader("Pragma", "public")
                         .WithHeader("Cache-Control", $"maxage={cacheExpire}")
                         .WithHeader("Expires", DateTime.UtcNow.AddHours(cacheExpire).ToString("R"))
-                        .WithView("Channel.html");
+                        .WithView("Channel");
                 });
             };
         }
