@@ -7,7 +7,6 @@
         "target": "es2015"
     },
     "files": [
-        "./src/require-config.ts",
-        "./src/hello.ts"
+        "./src/*.ts"
     ]
 }
