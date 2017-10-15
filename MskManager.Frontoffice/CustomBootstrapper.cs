@@ -9,6 +9,7 @@ using FluentValidation;
 using MskManager.Common.Bus.Commands;
 using MskManager.Common.Nancy.Validation;
 using Nancy.Responses.Negotiation;
+using Nancy.Conventions;
 
 namespace MskManager.Frontoffice
 {
@@ -44,6 +45,15 @@ namespace MskManager.Frontoffice
                     config.ResponseProcessors = new[] { typeof(JsonProcessor), typeof(ViewProcessor) };
                 });
             }
+        }
+
+        protected override void ConfigureConventions(NancyConventions nancyConventions)
+        {
+            base.ConfigureConventions(nancyConventions);
+
+            nancyConventions.StaticContentsConventions.Add(
+                StaticContentConventionBuilder.AddDirectory("built", @"built")
+            );
         }
     }
 }

@@ -40,6 +40,7 @@ namespace MskManager.Frontoffice.Modules
                 });
 
             };
+
             Get["/Channel", true] = async (parameters, ct) =>
             {
                 return await Task.Run(() =>
@@ -53,6 +54,8 @@ namespace MskManager.Frontoffice.Modules
                         .WithView("Channel");
                 });
             };
+
+            Get["/Hello"] = _ => View["hello"];
         }
     }
 }
