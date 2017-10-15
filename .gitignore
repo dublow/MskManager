@@ -280,6 +280,8 @@ __pycache__/
 
 # Telerik's JustMock configuration file
 *.jmconfig
+# Custom
+MskManager/MskManager.Frontoffice/Built/*
 
 # BizTalk build output
 *.btp.cs
